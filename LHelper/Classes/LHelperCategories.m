@@ -467,9 +467,9 @@
 - (NSString *)queryString
 {
     if ([self count] == 0) return nil;
-    
+
     NSMutableString *query = [NSMutableString string];
-    
+
     for (NSString *parameter in [self allKeys])
         [query appendFormat:@"&%@=%@", [parameter stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding], [[self valueForKey:parameter] stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
 
