@@ -17,7 +17,6 @@
 		A16BA8ED1665E8A60005AAC1 /* libLHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A11AF6FA16638255000F05CF /* libLHelper.a */; };
 		A172F24A1686263D001664F3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A172F2471686263D001664F3 /* AppDelegate.m */; };
 		A172F24B1686263D001664F3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A172F2491686263D001664F3 /* ViewController.m */; };
-		A172F25016862667001664F3 /* LHelperSample-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A172F24D16862667001664F3 /* LHelperSample-Info.plist */; };
 		A172F25116862667001664F3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A172F24F16862667001664F3 /* main.m */; };
 		A172F259168626AF001664F3 /* LHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A172F254168626AF001664F3 /* LHelper.m */; };
 		A172F25A168626AF001664F3 /* LHelperCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = A172F256168626AF001664F3 /* LHelperCategories.m */; };
@@ -241,7 +240,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A172F25016862667001664F3 /* LHelperSample-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,7 +320,7 @@
 			buildSettings = {
 				DSTROOT = /tmp/LHelper.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "LHelper/LHelper-Prefix.pch";
+				GCC_PREFIX_HEADER = "LHelper/Supporting Files/LHelper-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -334,7 +332,7 @@
 			buildSettings = {
 				DSTROOT = /tmp/LHelper.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "LHelper/LHelper-Prefix.pch";
+				GCC_PREFIX_HEADER = "LHelper/Supporting Files/LHelper-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -346,8 +344,8 @@
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "LHelperSample/LHelperSample-Prefix.pch";
-				INFOPLIST_FILE = "LHelperSample/LHelperSample-Info.plist";
+				GCC_PREFIX_HEADER = "LHelperSample/Supporting Files/LHelperSample-Prefix.pch";
+				INFOPLIST_FILE = "LHelperSample/Supporting Files/LHelperSample-Info.plist";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -362,8 +360,8 @@
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "LHelperSample/LHelperSample-Prefix.pch";
-				INFOPLIST_FILE = "LHelperSample/LHelperSample-Info.plist";
+				GCC_PREFIX_HEADER = "LHelperSample/Supporting Files/LHelperSample-Prefix.pch";
+				INFOPLIST_FILE = "LHelperSample/Supporting Files/LHelperSample-Info.plist";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
 					"-ObjC",
