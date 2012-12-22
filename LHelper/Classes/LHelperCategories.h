@@ -84,13 +84,25 @@
 @end
 
 
-#pragma mark -
+#pragma mark - NSArray
 
 
 @interface NSArray (NSArray_LHelperCategories)
 
 
 - (NSArray *)randomisedArray;
+
+
+@end
+
+
+#pragma mark - NSDictionary
+
+
+@interface NSDictionary (NSDictionary_LHelperCategories)
+
+
+- (NSString *)queryString;
 
 
 @end
