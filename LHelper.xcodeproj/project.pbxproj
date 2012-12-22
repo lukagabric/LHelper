@@ -21,9 +21,6 @@
 		A16BA8D61665E8930005AAC1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A16BA8D41665E8930005AAC1 /* InfoPlist.strings */; };
 		A16BA8D81665E8930005AAC1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A16BA8D71665E8930005AAC1 /* main.m */; };
 		A16BA8DC1665E8930005AAC1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A16BA8DB1665E8930005AAC1 /* AppDelegate.m */; };
-		A16BA8DE1665E8930005AAC1 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A16BA8DD1665E8930005AAC1 /* Default.png */; };
-		A16BA8E01665E8930005AAC1 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A16BA8DF1665E8930005AAC1 /* Default@2x.png */; };
-		A16BA8E21665E8930005AAC1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A16BA8E11665E8930005AAC1 /* Default-568h@2x.png */; };
 		A16BA8E51665E8930005AAC1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16BA8E41665E8930005AAC1 /* ViewController.m */; };
 		A16BA8E81665E8930005AAC1 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16BA8E61665E8930005AAC1 /* ViewController.xib */; };
 		A16BA8ED1665E8A60005AAC1 /* libLHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A11AF6FA16638255000F05CF /* libLHelper.a */; };
@@ -61,9 +58,6 @@
 		A16BA8D91665E8930005AAC1 /* LHelperSample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LHelperSample-Prefix.pch"; sourceTree = "<group>"; };
 		A16BA8DA1665E8930005AAC1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A16BA8DB1665E8930005AAC1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		A16BA8DD1665E8930005AAC1 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		A16BA8DF1665E8930005AAC1 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		A16BA8E11665E8930005AAC1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A16BA8E31665E8930005AAC1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A16BA8E41665E8930005AAC1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A16BA8E71665E8930005AAC1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
@@ -167,9 +161,6 @@
 				A16BA8D41665E8930005AAC1 /* InfoPlist.strings */,
 				A16BA8D71665E8930005AAC1 /* main.m */,
 				A16BA8D91665E8930005AAC1 /* LHelperSample-Prefix.pch */,
-				A16BA8DD1665E8930005AAC1 /* Default.png */,
-				A16BA8DF1665E8930005AAC1 /* Default@2x.png */,
-				A16BA8E11665E8930005AAC1 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -244,9 +235,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A16BA8D61665E8930005AAC1 /* InfoPlist.strings in Resources */,
-				A16BA8DE1665E8930005AAC1 /* Default.png in Resources */,
-				A16BA8E01665E8930005AAC1 /* Default@2x.png in Resources */,
-				A16BA8E21665E8930005AAC1 /* Default-568h@2x.png in Resources */,
 				A16BA8E81665E8930005AAC1 /* ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
