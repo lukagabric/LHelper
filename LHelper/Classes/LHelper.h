@@ -123,6 +123,12 @@ return shared##classname;                           \
 + (UIColor *)colorFromHexString:(NSString *)hexString;
 
 
+#pragma mark - Image With UIColor
+
+
++ (UIImage *)imageWithColor:(UIColor *)color;
+
+
 #pragma mark - Radnom
 
 
