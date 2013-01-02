@@ -473,7 +473,7 @@
     for (NSString *parameter in [self allKeys])
         [query appendFormat:@"&%@=%@", [parameter stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding], [[self valueForKey:parameter] stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
 
-    return [NSString stringWithFormat:@"?%@", [query substringFromIndex:1]];
+    return [NSString stringWithFormat:@"%@", [query substringFromIndex:1]];
 }
 
 
