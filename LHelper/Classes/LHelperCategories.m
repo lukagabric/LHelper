@@ -455,6 +455,12 @@
 }
 
 
+- (void)logItems
+{
+    for (id item in self) Print(item);
+}
+
+
 @end
 
 

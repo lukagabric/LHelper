@@ -90,6 +90,7 @@
 @interface NSArray (NSArray_LHelperCategories)
 
 
+- (void)logItems;
 - (NSArray *)randomisedArray;
 
 
