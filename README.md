@@ -1,7 +1,7 @@
 LHelper
 =======
 
-Many useful iOS methods. I'm not going to mention them here, just check the LHelper and LHelperCategories declarations.
+Many useful iOS methods and class extensions. I'm not going to mention them here, just check the LHelper and LHelperCategories declarations.
 
 You may use the LHelper and LHelperCategories classes files in your project, or you may follow the steps below to clone the repo and use it as static library in your project.
 
