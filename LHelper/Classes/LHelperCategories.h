@@ -50,6 +50,12 @@
 @property (nonatomic) CGFloat width;
 @property (nonatomic) CGFloat height;
 
+@property (nonatomic) CGFloat midX;
+@property (nonatomic) CGFloat maxX;
+
+@property (nonatomic) CGFloat midY;
+@property (nonatomic) CGFloat maxY;
+
 @property (nonatomic) CGPoint origin;
 @property (nonatomic) CGSize size;
 

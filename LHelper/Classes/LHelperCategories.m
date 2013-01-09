@@ -258,6 +258,62 @@
 }
 
 
+- (CGFloat)midX
+{
+    return CGRectGetMidX(self.frame);
+}
+
+
+- (void)setMidX:(CGFloat)midX
+{
+    CGRect frame = self.frame;
+    frame.origin.x = midX - frame.size.width/2;
+    self.frame = frame;
+}
+
+
+- (CGFloat)maxX
+{
+    return CGRectGetMaxX(self.frame);
+}
+
+
+- (void)setMaxX:(CGFloat)maxX
+{
+    CGRect frame = self.frame;
+    frame.origin.x = maxX - frame.size.width;
+    self.frame = frame;
+}
+
+
+- (CGFloat)midY
+{
+    return CGRectGetMidY(self.frame);
+}
+
+
+- (void)setMidY:(CGFloat)midY
+{
+    CGRect frame = self.frame;
+    frame.origin.y = midY - frame.size.height/2;
+    self.frame = frame;
+}
+
+
+- (CGFloat)maxY
+{
+    return CGRectGetMaxY(self.frame);
+}
+
+
+- (void)setMaxY:(CGFloat)maxY
+{
+    CGRect frame = self.frame;
+    frame.origin.y = maxY - frame.size.height;
+    self.frame = frame;
+}
+
+
 - (CGPoint)origin
 {
     return self.frame.origin;
