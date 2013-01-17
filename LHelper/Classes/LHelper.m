@@ -11,25 +11,8 @@
 + (BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL
 {
     if (![[NSFileManager defaultManager] fileExistsAtPath:[URL path]]) return NO;
-
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5.1"))
-    {
-        NSError *error = nil;
-        BOOL success = [URL setResourceValue:[NSNumber numberWithBool: YES]
-                                      forKey:NSURLIsExcludedFromBackupKey
-                                       error: &error];
-
-        if (!success)
-        {
-            Log(@"Error excluding %@ from backup %@", [URL lastPathComponent], error);
-        }
-        
-        return success;
-    }
-    else
-    {
-        return [self addSkipBackupAttributeToItemAtPath:[URL path]];
-    }
+    
+    return [self addSkipBackupAttributeToItemAtPath:[URL path]];
 }
 
 
