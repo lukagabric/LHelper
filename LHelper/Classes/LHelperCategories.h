@@ -83,10 +83,13 @@
 
 @interface UILabel (UILabel_LHelperCategories)
 
+
 - (void)decreaseHeight;
 - (void)decreaseWidth;
 - (void)adjustHeightWithMaxHeight:(CGFloat)maxHeight;
 - (void)adjustWidthWithMaxWidth:(CGFloat)maxWidth;
+- (void)adjustHeightToFit;
+- (void)adjustWidthToFit;
 
 
 @end

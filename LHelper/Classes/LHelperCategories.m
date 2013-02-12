@@ -516,6 +516,18 @@
 }
 
 
+- (void)adjustHeightToFit
+{
+    [self adjustHeightWithMaxHeight:MAXFLOAT];
+}
+
+
+- (void)adjustWidthToFit
+{
+    [self adjustWidthWithMaxWidth:MAXFLOAT];
+}
+
+
 @end
 
 
