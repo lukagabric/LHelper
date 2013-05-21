@@ -64,6 +64,12 @@
 @implementation UIView (UIView_LHelperCategories)
 
 
+- (void)ceilFrame
+{
+    self.frame = CGRectMake(ceil(self.frame.origin.x), ceil(self.frame.origin.y), ceil(self.frame.size.width), ceil(self.frame.size.height));
+}
+
+
 - (UIImage *)getImage
 {
     UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, 0.0);
@@ -576,6 +582,61 @@
         [query appendFormat:@"&%@=%@", [parameter stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding], [[self valueForKey:parameter] stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
 
     return [NSString stringWithFormat:@"%@", [query substringFromIndex:1]];
+}
+
+
+@end
+
+
+#pragma mark - NSDate
+
+
+@implementation NSDate (NSDate_LHelperCategories)
+
+
+- (NSDate *)dateToBeginningOfDay
+{
+    unsigned int flags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDateComponents* parts = [[NSCalendar currentCalendar] components:flags fromDate:self];
+    [parts setHour:0];
+    [parts setMinute:0];
+    [parts setSecond:0];
+    return [[NSCalendar currentCalendar] dateFromComponents:parts];
+}
+
+
+- (NSDate *)dateToEndOfDay
+{
+    unsigned int flags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDateComponents* parts = [[NSCalendar currentCalendar] components:flags fromDate:self];
+    [parts setHour:23];
+    [parts setMinute:59];
+    [parts setSecond:59];
+    return [[NSCalendar currentCalendar] dateFromComponents:parts];
+}
+
+
+- (BOOL)beforeDate:(NSDate *)date
+{
+    return [self compare:date] == NSOrderedAscending;
+}
+
+
+- (BOOL)beforeOrEqualToDate:(NSDate *)date
+{
+    return [self compare:date] != NSOrderedDescending;
+}
+
+
+- (BOOL)afterDate:(NSDate *)date
+{
+    return [self compare:date] == NSOrderedDescending;
+}
+
+
+- (BOOL)afterOrEqualToDate:(NSDate *)date
+{
+    return [self compare:date] != NSOrderedAscending;
 }
 
 

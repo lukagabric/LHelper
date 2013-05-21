@@ -25,6 +25,7 @@
 @interface UIView (UIView_LHelperCategories)
 
 
+- (void)ceilFrame;
 - (UIImage *)getImage;
 - (UIViewController *)viewController;
 - (void)placeBelowView:(UIView *)fixedView withPadding:(CGFloat)padding;
@@ -115,6 +116,23 @@
 
 
 - (NSString *)queryString;
+
+
+@end
+
+
+#pragma mark - NSDate
+
+
+@interface NSDate (NSDate_LHelperCategories)
+
+
+- (NSDate *)dateToBeginningOfDay;
+- (NSDate *)dateToEndOfDay;
+- (BOOL)beforeDate:(NSDate *)date;
+- (BOOL)beforeOrEqualToDate:(NSDate *)date;
+- (BOOL)afterDate:(NSDate *)date;
+- (BOOL)afterOrEqualToDate:(NSDate *)date;
 
 
 @end
