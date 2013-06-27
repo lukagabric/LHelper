@@ -409,67 +409,25 @@
 @implementation NSObject (NSObject_LHelperCategories)
 
 
-- (id)getFromNibNamed:(NSString *)nibName
-{
-	NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:nibName owner:nil options:nil];
-
-	for (UIView *view in topLevelObjects)
-	{
-		if ([view isKindOfClass:[self class]])
-		{
-			return view;
-		}
-	}
-
-	return nil;
-}
-
-
-- (id)getFromNib
-{
-	NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil];
-
-	for (UIView *view in topLevelObjects)
-	{
-		if ([view isKindOfClass:[self class]])
-		{
-			return view;
-		}
-	}
-
-	return nil;
-}
+static UINib *__nib;
+static NSString *__nibName;
 
 
 + (id)getFromNibNamed:(NSString *)nibName
 {
-	NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:nibName owner:nil options:nil];
-
-	for (UIView *view in topLevelObjects)
-	{
-		if ([view isKindOfClass:self])
-		{
-			return view;
-		}
-	}
-
-	return nil;
+    if (![nibName isEqualToString:__nibName])
+    {
+        __nibName = nibName;
+        __nib = [UINib nibWithNibName:nibName bundle:nil];
+    }
+    
+    return [__nib instantiateWithOwner:nil options:nil][0];
 }
 
 
 + (id)getFromNib
 {
-	NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil];
-
-	for (UIView *view in topLevelObjects)
-	{
-		if ([view isKindOfClass:self])
-		{
-			return view;
-		}
-	}
-
-	return nil;
+    return [self getFromNibNamed:NSStringFromClass(self)];
 }
 
 

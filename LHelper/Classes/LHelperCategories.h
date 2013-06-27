@@ -70,8 +70,6 @@
 @interface NSObject (NSObject_LHelperCategories)
 
 
-- (id)getFromNibNamed:(NSString *)nibName;
-- (id)getFromNib;
 + (id)getFromNibNamed:(NSString *)nibName;
 + (id)getFromNib;
 
