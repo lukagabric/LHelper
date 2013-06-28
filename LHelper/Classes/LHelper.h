@@ -114,6 +114,9 @@ return shared##classname;                           \
 #pragma mark - UUID
 
 
+#define newUUID() [LHelper getUUID]
+
+
 + (NSString *)getUUID;
 
 
