@@ -9,12 +9,13 @@
 {
     [super viewDidLoad];
     
-    [_label1 adjustWidthWithMaxWidth:9999];
-    [_label1 adjustHeightWithMaxHeight:9999];
-    [_label2 adjustWidthWithMaxWidth:9999];
-    [_label2 adjustHeightWithMaxHeight:9999];
-        
-    _label1.maxX = _label2.midX;
+    [_label1 adjustHeightToFit];
+    [_label1 adjustWidthToFit];
+    [_label2 adjustHeightToFit];
+    [_label2 adjustWidthToFit];
+    
+    _label2.y = _label1.maxY;
+    _label2.x = _label1.midX;
 }
 
 

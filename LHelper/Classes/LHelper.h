@@ -15,13 +15,15 @@
 
 
 #define IntToStr(int) [NSString stringWithFormat:@"%d", int]
+#define Int32ToStr(int) [NSString stringWithFormat:@"%ld", int]
+#define Int64ToStr(int) [NSString stringWithFormat:@"%lld", int]
 #define FloatToStr(float) [NSString stringWithFormat:@"%f", float]
 
 
 #pragma mark - Log
 
 
-#ifdef DEBUG
+#if DEBUG
 #define LogLong(format, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 #define Print(object)        NSLog(@"%@", object)
 #define Log(format, ...)	 NSLog(@"%@", [NSString stringWithFormat:format, ## __VA_ARGS__])
@@ -33,6 +35,37 @@
 #define Log(format, ...)
 #define LogInt(someInt)
 #define LogFloat(someFloat)
+#endif
+
+
+#pragma mark - LWarning
+
+#if DEBUG
+#define LWarning(condition, desc, ...)	\
+if (!(condition)) {		\
+NSLog(@"\n======> WARNING: " desc @"; %s [Line %d] ", ##__VA_ARGS__, __PRETTY_FUNCTION__, __LINE__);		\
+}
+#else
+#define LWarning(condition, desc, ...)
+#endif
+
+
+#pragma mark - LAssert
+
+
+#if DEBUG
+#define LAssert(condition, desc, ...)	\
+do {				\
+__PRAGMA_PUSH_NO_EXTRA_ARG_WARNINGS \
+if (!(condition)) {		\
+[[NSAssertionHandler currentHandler] handleFailureInMethod:_cmd \
+object:self file:[NSString stringWithUTF8String:__FILE__] \
+lineNumber:__LINE__ description:(desc), ##__VA_ARGS__]; \
+}				\
+__PRAGMA_POP_NO_EXTRA_ARG_WARNINGS \
+} while(0)
+#else
+#define LAssert(condition, desc, ...)
 #endif
 
 
@@ -102,6 +135,24 @@ return shared##classname;                           \
 
 
 @interface LHelper : NSObject
+
+
+#pragma mark - Validate password
+
+
+#define isPasswordValid(password) [LHelper isPasswordValid:password]
+
+
++ (BOOL)isPasswordValid:(NSString *)pass;
+
+
+#pragma mark - Validate email
+
+
+#define isMailValid(mail) [LHelper isMailValid:mail]
+
+
++ (BOOL)isMailValid:(NSString *)email;
 
 
 #pragma mark - DoNotBackup

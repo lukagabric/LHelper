@@ -100,8 +100,9 @@
 @interface NSArray (NSArray_LHelperCategories)
 
 
-- (void)logItems;
 - (NSArray *)randomisedArray;
+- (id)randomObject;
+- (void)logItems;
 
 
 @end
@@ -131,6 +132,68 @@
 - (BOOL)beforeOrEqualToDate:(NSDate *)date;
 - (BOOL)afterDate:(NSDate *)date;
 - (BOOL)afterOrEqualToDate:(NSDate *)date;
+- (NSString *)stringWithFormat:(NSString *)format;
+
+
+@end
+
+
+#pragma mark - UIImage
+
+
+@interface UIImage (UIImage_LHelperCategories)
+
+
+- (UIImage *)imageWithFixedOrientation;
+
+
+@end
+
+
+#pragma mark - NSString
+
+
+@interface NSString (NSString_LHelperCategories)
+
+
+- (NSDate *)dateWithFormat:(NSString *)format;
+- (NSString *)md5;
+
+
+@end
+
+
+#pragma mark - NSData
+
+
+@interface NSData (NSData_LHelperCategories)
+
+
+- (NSString *)md5;
+
+
+@end
+
+
+#pragma mark - UIAlertView
+
+
+typedef void (^LDismissBlock)(int buttonIndex);
+typedef void (^LCancelBlock)();
+
+
+@interface UIAlertView (UIAlertView_LHelperCategories)
+
+
++ (void)showAlertWithMessage:(NSString *)message okButtonTitle:(NSString *)okTitle;
++ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message okButtonTitle:(NSString *)okTitle;
++ (void)showAlertWithMessage:(NSString *)message okButtonTitle:(NSString *)okTitle okActionBlock:(void(^)(void))okBlock;
++ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message okButtonTitle:(NSString *)okTitle okActionBlock:(void(^)(void))okBlock;
++ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message okButtonTitle:(NSString *)okTitle okActionBlock:(void(^)(void))okBlock cancelButtonTitle:(NSString *)cancelTitle andCancelBlock:(void(^)(void))cancelBlock;
+
+
+@property (nonatomic, copy) LDismissBlock dismissBlock;
+@property (nonatomic, copy) LCancelBlock cancelBlock;
 
 
 @end
