@@ -676,6 +676,12 @@ static NSString *__nibName;
 @implementation NSData (NSData_LHelperCategories)
 
 
+- (NSString *)stringUsingEncoding:(NSStringEncoding)encoding
+{
+    return [[NSString alloc] initWithData:self encoding:encoding];
+}
+
+
 - (NSString *)md5
 {
     unsigned char result[16];

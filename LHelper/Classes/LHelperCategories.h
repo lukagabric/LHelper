@@ -169,6 +169,7 @@
 @interface NSData (NSData_LHelperCategories)
 
 
+- (NSString *)stringUsingEncoding:(NSStringEncoding)encoding;
 - (NSString *)md5;
 
 
