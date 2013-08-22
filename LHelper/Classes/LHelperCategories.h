@@ -133,6 +133,8 @@
 - (BOOL)afterDate:(NSDate *)date;
 - (BOOL)afterOrEqualToDate:(NSDate *)date;
 - (NSString *)stringWithFormat:(NSString *)format;
+- (NSString *)stringWithFormat:(NSString *)format useGMT:(BOOL)useGMT;
+- (NSString *)stringWithFormat:(NSString *)format andTimeZone:(NSTimeZone *)timeZone;
 
 
 @end
@@ -158,6 +160,7 @@
 
 - (NSDate *)dateWithFormat:(NSString *)format;
 - (NSString *)md5;
+- (NSData *)base64StringToData;
 
 
 @end
@@ -171,6 +174,7 @@
 
 - (NSString *)stringUsingEncoding:(NSStringEncoding)encoding;
 - (NSString *)md5;
+- (NSString *)base64EncodedString;
 
 
 @end
@@ -198,6 +202,13 @@ typedef void (^LCancelBlock)();
 
 
 @end
+
+
+#pragma mark - Base64
+
+
+void *LNewBase64Decode(const char *inputBuffer, size_t length, size_t *outputLength);
+char *LNewBase64Encode(const void *buffer, size_t length, bool separateLines, size_t *outputLength);
 
 
 #pragma mark -
