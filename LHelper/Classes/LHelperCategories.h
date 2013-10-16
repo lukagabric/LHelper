@@ -159,6 +159,8 @@
 - (NSDate *)dateWithFormat:(NSString *)format;
 - (NSString *)md5;
 - (NSData *)dataFromBase64String;
+- (NSString *)AES128EncryptedBase64StringWithKey:(NSString *)key;
+- (NSString *)AES128DecryptedBase64StringWithKey:(NSString *)key;
 - (NSString *)AES256EncryptedBase64StringWithKey:(NSString *)key;
 - (NSString *)AES256DecryptedBase64StringWithKey:(NSString *)key;
 
@@ -184,6 +186,8 @@ char *NewBase64Encode(
 
 - (NSString *)stringUsingEncoding:(NSStringEncoding)encoding;
 - (NSString *)md5;
+- (NSData *)AES128EncryptWithKey:(NSString *)key;
+- (NSData *)AES128DecryptWithKey:(NSString *)key;
 - (NSData *)AES256EncryptWithKey:(NSString *)key;
 - (NSData *)AES256DecryptWithKey:(NSString *)key;
 + (NSData *)dataFromBase64String:(NSString *)aString;

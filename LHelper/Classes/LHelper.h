@@ -81,7 +81,7 @@ __PRAGMA_POP_NO_EXTRA_ARG_WARNINGS \
 #pragma mark - Check if widescreen
 
 
-#define IS_WIDESCREEN (fabs((double)[[UIScreen mainScreen] bounds].size.height - (double)568) < DBL_EPSILON)
+#define isWidescreen (fabs((double)[[UIScreen mainScreen] bounds].size.height - (double)568) < DBL_EPSILON)
 
 
 #pragma mark - Check device
