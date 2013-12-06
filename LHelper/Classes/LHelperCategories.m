@@ -1,3 +1,9 @@
+//
+//  Created by Luka Gabrić.
+//  Copyright (c) 2013 Luka Gabrić. All rights reserved.
+//
+
+
 #import "LHelperCategories.h"
 #import "LHelper.h"
 #import <QuartzCore/QuartzCore.h>
@@ -19,25 +25,13 @@
 
 - (BOOL)isModal
 {
-	BOOL isModal = ((self.parentViewController && self.parentViewController.modalViewController == self) ||
-					//or if I have a navigation controller, check if its parent modal view controller is self navigation controller
-					( self.navigationController && self.navigationController.parentViewController && self.navigationController.parentViewController.modalViewController == self.navigationController) ||
-					//or if the parent of my UITabBarController is also a UITabBarController class, then there is no way to do that, except by using a modal presentation
-					[[[self tabBarController] parentViewController] isKindOfClass:[UITabBarController class]]);
-    
-    //iOS 5+
-    if (!isModal && [self respondsToSelector:@selector(presentingViewController)]) {
-        
-        isModal = ((self.presentingViewController && self.presentingViewController.modalViewController == self) ||
-				   //or if I have a navigation controller, check if its parent modal view controller is self navigation controller
-				   (self.navigationController && self.navigationController.presentingViewController && self.navigationController.presentingViewController.modalViewController == self.navigationController) ||
-				   //or if the parent of my UITabBarController is also a UITabBarController class, then there is no way to do that, except by using a modal presentation
-				   [[[self tabBarController] presentingViewController] isKindOfClass:[UITabBarController class]]);
-        
-    }
+    BOOL isModal = ((self.presentingViewController && self.presentingViewController.presentedViewController == self) ||
+                    //or if I have a navigation controller, check if its parent modal view controller is self navigation controller
+                    (self.navigationController && self.navigationController.presentingViewController && self.navigationController.presentingViewController.presentedViewController == self.navigationController) ||
+                    //or if the parent of my UITabBarController is also a UITabBarController class, then there is no way to do that, except by using a modal presentation
+                    [[[self tabBarController] presentingViewController] isKindOfClass:[UITabBarController class]]);
     
     return isModal;
-    
 }
 
 
@@ -45,16 +39,8 @@
 {
 	UIViewController *c = [[UIViewController alloc]init];
     
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0"))
-    {
-        [self presentViewController:c animated:NO completion:nil];
-        [self dismissViewControllerAnimated:NO completion:nil];
-    }
-    else
-    {
-        [self presentModalViewController:c animated:NO];
-        [self dismissModalViewControllerAnimated:NO];
-    }
+    [self presentViewController:c animated:NO completion:nil];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 

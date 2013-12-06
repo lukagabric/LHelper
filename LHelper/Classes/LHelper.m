@@ -1,8 +1,27 @@
+//
+//  Created by Luka Gabrić.
+//  Copyright (c) 2013 Luka Gabrić. All rights reserved.
+//
+
+
 #import "LHelper.h"
 #include <sys/xattr.h>
 
 
 @implementation LHelper
+
+
+#pragma mark - Human readable file size
+
+
++ (NSString *)humanReadableFileSizeWithBytes:(CGFloat)bytes
+{
+    if (bytes <= 0) return @"0";
+    
+    NSArray *units = @[@"B", @"KB", @"MB", @"GB", @"TB"];
+    NSInteger digitGroups = (NSInteger)(log10(bytes)/log10(1024));
+    return [NSString stringWithFormat:@"%.2f %@", (bytes/pow(1024, digitGroups)), units[digitGroups]];
+}
 
 
 #pragma mark - Validate password

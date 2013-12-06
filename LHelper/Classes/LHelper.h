@@ -1,3 +1,9 @@
+//
+//  Created by Luka Gabrić.
+//  Copyright (c) 2013 Luka Gabrić. All rights reserved.
+//
+
+
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "LHelperCategories.h"
@@ -117,6 +123,11 @@ __PRAGMA_POP_NO_EXTRA_ARG_WARNINGS \
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
 
+#define isIOS5OrAbove SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5")
+#define isIOS6OrAbove SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6")
+#define isIOS7OrAbove SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7")
+
+
 #pragma mark - Singleton GCD Macro
 
 
@@ -135,6 +146,12 @@ return shared##classname;                           \
 
 
 @interface LHelper : NSObject
+
+
+#pragma mark - Human readable file size
+
+
++ (NSString *)humanReadableFileSizeWithBytes:(CGFloat)bytes;
 
 
 #pragma mark - Validate password
