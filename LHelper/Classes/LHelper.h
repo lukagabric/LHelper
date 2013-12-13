@@ -123,9 +123,8 @@ __PRAGMA_POP_NO_EXTRA_ARG_WARNINGS \
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
 
-#define isIOS5OrAbove SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"5")
-#define isIOS6OrAbove SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6")
-#define isIOS7OrAbove SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7")
+#define isIOS6 SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6") && SYSTEM_VERSION_LESS_THAN(@"7")
+#define isIOS7 SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7")
 
 
 #pragma mark - Singleton GCD Macro
