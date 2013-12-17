@@ -134,6 +134,9 @@
 
 - (NSDate *)dateToBeginningOfDay;
 - (NSDate *)dateToEndOfDay;
+- (NSDate *)dateToBeginningOfMonth;
+- (NSDate *)dateToBeginningOfPreviousMonth;
+- (NSDate *)dateToBeginningOfNextMonth;
 - (BOOL)beforeDate:(NSDate *)date;
 - (BOOL)beforeOrEqualToDate:(NSDate *)date;
 - (BOOL)afterDate:(NSDate *)date;
@@ -222,6 +225,31 @@ typedef void (^LCancelBlock)();
 
 @property (nonatomic, copy) LDismissBlock dismissBlock;
 @property (nonatomic, copy) LCancelBlock cancelBlock;
+
+
+@end
+
+
+#pragma mark - UINavigationBar
+
+
+
+@interface UINavigationBar (UINavigationBar_LHelperCategories)
+
+
+- (void)removeBottomBorder;
+
+
+@end
+
+
+#pragma mark - UITableViewCell
+
+
+@interface UITableViewCell (UITableViewCell_LHelperCategories)
+
+
+- (UITableView *)getTableView;
 
 
 @end

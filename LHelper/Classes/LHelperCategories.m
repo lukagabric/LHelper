@@ -569,6 +569,31 @@ static NSString *__nibName;
 }
 
 
+- (NSDate *)dateToBeginningOfMonth
+{
+    NSDate *d = nil;
+    BOOL ok = [[NSCalendar currentCalendar] rangeOfUnit:NSMonthCalendarUnit startDate:&d interval:NULL forDate:self];
+    LAssert(ok, @"Failed to calculate the first day the month based on %@", self);
+    return d;
+}
+
+
+- (NSDate *)dateToBeginningOfPreviousMonth
+{
+    NSDateComponents *dateComponents = [NSDateComponents new];
+    dateComponents.month = -1;
+    return [[[NSCalendar currentCalendar] dateByAddingComponents:dateComponents toDate:self options:0] dateToBeginningOfMonth];
+}
+
+
+- (NSDate *)dateToBeginningOfNextMonth
+{
+    NSDateComponents *dateComponents = [NSDateComponents new];
+    dateComponents.month = 1;
+    return [[[NSCalendar currentCalendar] dateByAddingComponents:dateComponents toDate:self options:0] dateToBeginningOfMonth];
+}
+
+
 - (BOOL)beforeDate:(NSDate *)date
 {
     return [self compare:date] == NSOrderedAscending;
@@ -1247,6 +1272,45 @@ static char LCANCEL_IDENTIFER;
                             cancelBlock();
                     }
                      onCancel:nil] show];
+}
+
+
+@end
+
+
+#pragma mark - UINavigationBar
+
+
+@implementation UINavigationBar (UINavigationBar_LHelperCategories)
+
+
+- (void)removeBottomBorder
+{
+    for (UIView *parentView in self.subviews)
+        for (UIView *childView in parentView.subviews)
+            if ([childView isKindOfClass:[UIImageView class]])
+                [childView removeFromSuperview];
+}
+
+
+@end
+
+
+
+#pragma mark - UITableViewCell
+
+
+@implementation UITableViewCell (UITableViewCell_LHelperCategories)
+
+
+- (UITableView *)getTableView
+{
+    id view = [self superview];
+    
+    while ([view isKindOfClass:[UITableView class]] == NO)
+        view = [view superview];
+        
+        return (UITableView *)view;
 }
 
 
