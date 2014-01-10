@@ -389,6 +389,84 @@
 }
 
 
+- (NSLayoutConstraint *)addTopConstraintFromView:(UIView *)fromView toView:(UIView *)toView withConstant:(CGFloat)constant
+{
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:fromView
+                                                                  attribute:NSLayoutAttributeTop
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:toView
+                                                                  attribute:NSLayoutAttributeBottom
+                                                                 multiplier:1.0
+                                                                   constant:constant];
+    
+    [self addConstraint:constraint];
+    
+    return constraint;
+}
+
+
+- (NSLayoutConstraint *)addBottomConstraintFromView:(UIView *)fromView toView:(UIView *)toView withConstant:(CGFloat)constant
+{
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:fromView
+                                                                  attribute:NSLayoutAttributeBottom
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:toView
+                                                                  attribute:NSLayoutAttributeTop
+                                                                 multiplier:1.0
+                                                                   constant:constant];
+    
+    [self addConstraint:constraint];
+    
+    return constraint;
+}
+
+
+- (NSLayoutConstraint *)addLeftConstraintFromView:(UIView *)fromView toView:(UIView *)toView withConstant:(CGFloat)constant
+{
+    return [self addConstraintWithAttribute:NSLayoutAttributeLeft fromView:fromView toView:toView withConstant:constant];
+}
+
+
+- (NSLayoutConstraint *)addRightConstraintFromView:(UIView *)fromView toView:(UIView *)toView withConstant:(CGFloat)constant
+{
+    return [self addConstraintWithAttribute:NSLayoutAttributeRight fromView:fromView toView:toView withConstant:constant];
+}
+
+
+- (NSLayoutConstraint *)addLeadingConstraintFromView:(UIView *)fromView toView:(UIView *)toView withConstant:(CGFloat)constant
+{
+    return [self addConstraintWithAttribute:NSLayoutAttributeLeading fromView:fromView toView:toView withConstant:constant];
+}
+
+
+- (NSLayoutConstraint *)addTrailingConstraintFromView:(UIView *)fromView toView:(UIView *)toView withConstant:(CGFloat)constant
+{
+    return [self addConstraintWithAttribute:NSLayoutAttributeTrailing fromView:fromView toView:toView withConstant:constant];
+}
+
+
+- (NSLayoutConstraint *)addConstraintWithAttribute:(NSLayoutAttribute)attribute fromView:(UIView *)fromView toView:(UIView *)toView
+{
+    return [self addConstraintWithAttribute:attribute fromView:fromView toView:toView withConstant:0];
+}
+
+
+- (NSLayoutConstraint *)addConstraintWithAttribute:(NSLayoutAttribute)attribute fromView:(UIView *)fromView toView:(UIView *)toView withConstant:(CGFloat)constant
+{
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:fromView
+                                                                  attribute:attribute
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:toView
+                                                                  attribute:attribute
+                                                                 multiplier:1.0
+                                                                   constant:constant];
+    
+    [self addConstraint:constraint];
+    
+    return constraint;
+}
+
+
 @end
 
 
@@ -574,7 +652,7 @@ static NSString *__nibName;
     NSDate *d = nil;
     BOOL ok = [[NSCalendar currentCalendar] rangeOfUnit:NSMonthCalendarUnit startDate:&d interval:NULL forDate:self];
     LAssert(ok, @"Failed to calculate the first day the month based on %@", self);
-    return d;
+    return ok ? d : nil;
 }
 
 

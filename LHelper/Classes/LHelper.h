@@ -147,6 +147,12 @@ return shared##classname;                           \
 @interface LHelper : NSObject
 
 
+#pragma mark - Basic HTTP Authentication
+
+
++ (NSDictionary *)basicHttpAuthDictForUsername:(NSString *)username andPassword:(NSString *)password;
+
+
 #pragma mark - Human readable file size
 
 

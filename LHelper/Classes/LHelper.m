@@ -11,6 +11,16 @@
 @implementation LHelper
 
 
+#pragma mark - Basic HTTP Authentication
+
+
++ (NSDictionary *)basicHttpAuthDictForUsername:(NSString *)username andPassword:(NSString *)password
+{
+    NSData *authData = [[NSString stringWithFormat:@"%@:%@", username, password] dataUsingEncoding:NSASCIIStringEncoding];
+    return @{@"Authorization": [NSString stringWithFormat:@"Basic %@", [authData base64EncodedString]]};
+}
+
+
 #pragma mark - Human readable file size
 
 

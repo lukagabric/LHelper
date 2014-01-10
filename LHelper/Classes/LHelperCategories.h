@@ -40,6 +40,14 @@
 - (void)placeCenterAndRightFromView:(UIView *)fixedView withPadding:(CGFloat)padding;
 - (void)setWidth:(CGFloat)width andHeight:(CGFloat)height;
 - (void)setX:(CGFloat)x andY:(CGFloat)y;
+- (NSLayoutConstraint *)addTopConstraintFromView:(UIView *)fromView toView:(UIView *)toView withConstant:(CGFloat)constant;
+- (NSLayoutConstraint *)addBottomConstraintFromView:(UIView *)fromView toView:(UIView *)toView withConstant:(CGFloat)constant;
+- (NSLayoutConstraint *)addLeftConstraintFromView:(UIView *)fromView toView:(UIView *)toView withConstant:(CGFloat)constant;
+- (NSLayoutConstraint *)addRightConstraintFromView:(UIView *)fromView toView:(UIView *)toView withConstant:(CGFloat)constant;
+- (NSLayoutConstraint *)addLeadingConstraintFromView:(UIView *)fromView toView:(UIView *)toView withConstant:(CGFloat)constant;
+- (NSLayoutConstraint *)addTrailingConstraintFromView:(UIView *)fromView toView:(UIView *)toView withConstant:(CGFloat)constant;
+- (NSLayoutConstraint *)addConstraintWithAttribute:(NSLayoutAttribute)attribute fromView:(UIView *)fromView toView:(UIView *)toView;
+- (NSLayoutConstraint *)addConstraintWithAttribute:(NSLayoutAttribute)attribute fromView:(UIView *)fromView toView:(UIView *)toView withConstant:(CGFloat)constant;
 
 
 @property (nonatomic) CGFloat left;
