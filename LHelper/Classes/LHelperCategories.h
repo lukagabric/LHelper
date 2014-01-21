@@ -103,6 +103,8 @@
 - (void)adjustWidthWithMaxWidth:(CGFloat)maxWidth;
 - (void)adjustHeightToFit;
 - (void)adjustWidthToFit;
+- (CGFloat)heightForLabelWidth:(CGFloat)width;
+- (CGFloat)widthForLabelHeight:(CGFloat)height;
 
 
 @end

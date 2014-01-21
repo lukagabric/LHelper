@@ -559,6 +559,18 @@ static NSString *__nibName;
 }
 
 
+- (CGFloat)heightForLabelWidth:(CGFloat)width
+{
+    return [self.text sizeWithFont:self.font constrainedToSize:CGSizeMake(width, MAXFLOAT) lineBreakMode:self.lineBreakMode].height;
+}
+
+
+- (CGFloat)widthForLabelHeight:(CGFloat)height
+{
+    return [self.text sizeWithFont:self.font constrainedToSize:CGSizeMake(MAXFLOAT, height) lineBreakMode:self.lineBreakMode].width;
+}
+
+
 @end
 
 
