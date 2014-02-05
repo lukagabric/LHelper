@@ -93,9 +93,9 @@ __PRAGMA_POP_NO_EXTRA_ARG_WARNINGS \
 #pragma mark - Check device
 
 
-#define IS_IPHONE ([[[UIDevice currentDevice] model] isEqualToString:@"iPhone"])
-#define IS_IPOD ([[[UIDevice currentDevice] model] isEqualToString:@"iPod touch"])
-#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define isIPhone ([[[UIDevice currentDevice] model] isEqualToString:@"iPhone"])
+#define isIPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define isIPod ([[[UIDevice currentDevice] model] isEqualToString:@"iPod touch"])
 
 
 #pragma mark - Deg2Rad
