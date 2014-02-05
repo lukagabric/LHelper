@@ -240,28 +240,8 @@ return shared##classname;                           \
 + (NSDate *)dateFromString:(NSString *)string withFormat:(NSString *)theFormat;
 + (NSString *)stringFromDate:(NSDate *)date withFormat:(NSString *)theFormat;
 
-#pragma mark - Label
 
-+ (void)decreaseHeightOfLabel:(UILabel *)label;
-+ (void)adjustHeightOfLabel:(UILabel *)label maxHeight:(CGFloat)maxHeight;
-+ (void)decreaseWidthOfLabel:(UILabel *)label;
-+ (void)adjustWidthOfLabel:(UILabel *)label maxWidth:(CGFloat)maxWidth;
-
-
-#pragma mark - View
-
-
-+ (void)placeView:(UIView *)addView belowView:(UIView *)fixedView withPadding:(CGFloat)padding;
-+ (void)placeView:(UIView *)addView belowAndCenterView:(UIView *)fixedView withPadding:(CGFloat)padding;
-+ (void)placeView:(UIView *)addView rightFromView:(UIView *)fixedView withPadding:(CGFloat)padding;
-+ (void)placeView:(UIView *)addView rightAndCenterFromView:(UIView *)fixedView withPadding:(CGFloat)padding;
-+ (void)setOrigin:(CGPoint)origin forView:(UIView *)view;
-+ (void)setSize:(CGSize)size forView:(UIView *)view;
-+ (void)setX:(CGFloat)x andY:(CGFloat)y forView:(UIView *)view;
-+ (void)setWidth:(CGFloat)width andHeight:(CGFloat)height forView:(UIView *)view;
-
-
-#pragma mark - Location/Map
+#pragma mark -
 
 
 @end
