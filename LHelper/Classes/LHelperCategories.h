@@ -105,6 +105,8 @@
 - (void)adjustWidthToFit;
 - (CGFloat)heightForLabelWidth:(CGFloat)width;
 - (CGFloat)widthForLabelHeight:(CGFloat)height;
+- (CGFloat)heightThatFits;
+- (CGFloat)widthThatFits;
 
 
 @end

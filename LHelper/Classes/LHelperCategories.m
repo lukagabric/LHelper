@@ -571,6 +571,18 @@ static NSString *__nibName;
 }
 
 
+- (CGFloat)heightThatFits
+{
+    return [self heightForLabelWidth:self.frame.size.width];
+}
+
+
+- (CGFloat)widthThatFits
+{
+    return [self widthForLabelHeight:self.frame.size.height];
+}
+
+
 @end
 
 
