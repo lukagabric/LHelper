@@ -746,6 +746,12 @@ static NSString *__nibName;
 @implementation NSString (NSString_LHelperCategories)
 
 
+- (BOOL)isEmpty
+{
+    return [[self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0;
+}
+
+
 - (NSDate *)dateWithFormat:(NSString *)format
 {
 	NSDateFormatter *dateFormatter = [NSDateFormatter new];

@@ -175,6 +175,7 @@
 @interface NSString (NSString_LHelperCategories)
 
 
+- (BOOL)isEmpty;
 - (NSDate *)dateWithFormat:(NSString *)format;
 - (NSString *)md5;
 - (NSData *)dataFromBase64String;
