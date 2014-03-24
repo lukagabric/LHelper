@@ -634,9 +634,36 @@ static NSString *__nibName;
     NSMutableString *query = [NSMutableString string];
     
     for (NSString *parameter in [self allKeys])
-        [query appendFormat:@"&%@=%@", [parameter stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding], [[self valueForKey:parameter] stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+    {
+        NSString *stringValue;
+        
+        id value = [self valueForKey:parameter];
+        
+        if ([value isKindOfClass:[NSString class]])
+        {
+            stringValue = value;
+        }
+		else if ([NSJSONSerialization isValidJSONObject:value])
+		{
+			NSError *error;
+			NSData *jsonData = [NSJSONSerialization dataWithJSONObject:value options:0 error:&error];
+			
+			if (error)
+            {
+                Log(@"Unable to serialize JSON data, error: '%@'", error);
+            }
+            else
+            {
+                if (jsonData)
+                    stringValue = [[NSString alloc] initWithData:jsonData encoding:NSASCIIStringEncoding];
+            }
+		}
+        
+        if (stringValue)
+            [query appendFormat:@"&%@=%@", [parameter stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding], [stringValue stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+    }
     
-    return [NSString stringWithFormat:@"%@", [query substringFromIndex:1]];
+    return query.length > 2 ? [query substringFromIndex:1] : nil;
 }
 
 
