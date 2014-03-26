@@ -614,7 +614,10 @@ static NSString *__nibName;
 
 - (void)logItems
 {
-    for (id item in self) Print(item);
+#if DEBUG
+    for (id item in self)
+        NSLog(@"%@", item);
+#endif
 }
 
 
