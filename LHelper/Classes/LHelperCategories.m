@@ -623,12 +623,18 @@ static NSString *__nibName;
 
 - (NSString *)jsonStringWithPrettyPrint:(BOOL)prettyPrint
 {
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self
-                                                       options:(NSJSONWritingOptions) (prettyPrint ? NSJSONWritingPrettyPrinted : 0)
-                                                         error:nil];
+    NSData *jsonData;
     
+    if ([NSJSONSerialization isValidJSONObject:self])
+    {
+        jsonData = [NSJSONSerialization dataWithJSONObject:self
+                                                   options:(NSJSONWritingOptions)(prettyPrint ? NSJSONWritingPrettyPrinted : 0)
+                                                     error:nil];
+    }
+	
     return jsonData ? [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding] : nil;
 }
+
 
 
 @end
@@ -656,9 +662,9 @@ static NSString *__nibName;
         {
             stringValue = value;
         }
-		else if ([NSJSONSerialization isValidJSONObject:value])
+		else if ([value respondsToSelector:@selector(jsonStringWithPrettyPrint:)])
 		{
-            stringValue = [self jsonStringWithPrettyPrint:NO];
+            stringValue = [value jsonStringWithPrettyPrint:NO];
 		}
         else if ([value respondsToSelector:@selector(stringValue)])
 		{
@@ -677,9 +683,14 @@ static NSString *__nibName;
 
 - (NSString *)jsonStringWithPrettyPrint:(BOOL)prettyPrint
 {
-	NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self
-													   options:(NSJSONWritingOptions)(prettyPrint ? NSJSONWritingPrettyPrinted : 0)
-														 error:nil];
+    NSData *jsonData;
+    
+    if ([NSJSONSerialization isValidJSONObject:self])
+    {
+        jsonData = [NSJSONSerialization dataWithJSONObject:self
+                                                   options:(NSJSONWritingOptions)(prettyPrint ? NSJSONWritingPrettyPrinted : 0)
+                                                     error:nil];
+    }
 	
     return jsonData ? [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding] : nil;
 }
