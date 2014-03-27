@@ -121,6 +121,7 @@
 - (NSArray *)randomisedArray;
 - (id)randomObject;
 - (void)logItems;
+- (NSString *)jsonStringWithPrettyPrint:(BOOL)prettyPrint;
 
 
 @end
@@ -133,6 +134,7 @@
 
 
 - (NSString *)queryString;
+- (NSString *)jsonStringWithPrettyPrint:(BOOL)prettyPrint;
 
 
 @end

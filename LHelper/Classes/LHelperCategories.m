@@ -621,6 +621,16 @@ static NSString *__nibName;
 }
 
 
+- (NSString *)jsonStringWithPrettyPrint:(BOOL)prettyPrint
+{
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self
+                                                       options:(NSJSONWritingOptions) (prettyPrint ? NSJSONWritingPrettyPrinted : 0)
+                                                         error:nil];
+    
+    return jsonData ? [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding] : nil;
+}
+
+
 @end
 
 
@@ -648,18 +658,7 @@ static NSString *__nibName;
         }
 		else if ([NSJSONSerialization isValidJSONObject:value])
 		{
-			NSError *error;
-			NSData *jsonData = [NSJSONSerialization dataWithJSONObject:value options:0 error:&error];
-			
-			if (error)
-            {
-                Log(@"Unable to serialize JSON data, error: '%@'", error);
-            }
-            else
-            {
-                if (jsonData)
-                    stringValue = [[NSString alloc] initWithData:jsonData encoding:NSASCIIStringEncoding];
-            }
+            stringValue = [self jsonStringWithPrettyPrint:NO];
 		}
         else if ([value respondsToSelector:@selector(stringValue)])
 		{
@@ -673,6 +672,16 @@ static NSString *__nibName;
     }
     
     return query.length > 2 ? [query substringFromIndex:1] : nil;
+}
+
+
+- (NSString *)jsonStringWithPrettyPrint:(BOOL)prettyPrint
+{
+	NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self
+													   options:(NSJSONWritingOptions)(prettyPrint ? NSJSONWritingPrettyPrinted : 0)
+														 error:nil];
+	
+    return jsonData ? [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding] : nil;
 }
 
 
