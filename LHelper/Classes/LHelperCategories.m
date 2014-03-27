@@ -661,9 +661,15 @@ static NSString *__nibName;
                     stringValue = [[NSString alloc] initWithData:jsonData encoding:NSASCIIStringEncoding];
             }
 		}
+        else if ([value respondsToSelector:@selector(stringValue)])
+		{
+			stringValue = [value stringValue];
+		}
         
         if (stringValue)
             [query appendFormat:@"&%@=%@", [parameter stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding], [stringValue stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+        
+        LWarning(stringValue, @"No string value?");
     }
     
     return query.length > 2 ? [query substringFromIndex:1] : nil;
