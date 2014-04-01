@@ -144,6 +144,23 @@ return shared##classname;                           \
 #endif
 
 
+#pragma mark - Async Test Flag
+
+
+#define StartBlock() __block BOOL waitingForBlock = YES
+#define EndBlock() waitingForBlock = NO
+#define WaitUntilBlockCompletes() WaitWhile(waitingForBlock)
+#define WaitWhile(condition) \
+do { \
+while(condition) { \
+[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]]; \
+} \
+} while(0)
+
+
+#pragma mark -
+
+
 @interface LHelper : NSObject
 
 
