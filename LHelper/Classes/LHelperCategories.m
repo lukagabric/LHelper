@@ -640,6 +640,28 @@ static NSString *__nibName;
 @end
 
 
+#pragma mark - NSMutableArray
+
+
+@implementation NSMutableArray (NSMutableArray_LHelperCategories)
+
+
++ (id)mutableArrayUsingWeakReferences
+{
+    return [self mutableArrayUsingWeakReferencesWithCapacity:0];
+}
+
+
++ (id)mutableArrayUsingWeakReferencesWithCapacity:(NSUInteger)capacity
+{
+    CFArrayCallBacks callbacks = {0, NULL, NULL, CFCopyDescription, CFEqual};
+    return (id)CFBridgingRelease(CFArrayCreateMutable(0, capacity, &callbacks));
+}
+
+
+@end
+
+
 #pragma mark - NSDictionary
 
 

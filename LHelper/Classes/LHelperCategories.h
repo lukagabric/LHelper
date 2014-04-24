@@ -127,6 +127,19 @@
 @end
 
 
+#pragma mark - NSMutableArray
+
+
+@interface NSMutableArray (NSMutableArray_LHelperCategories)
+
+
++ (id)mutableArrayUsingWeakReferences;
++ (id)mutableArrayUsingWeakReferencesWithCapacity:(NSUInteger)capacity;
+
+
+@end
+
+
 #pragma mark - NSDictionary
 
 
