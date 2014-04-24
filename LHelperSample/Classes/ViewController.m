@@ -19,4 +19,14 @@
 }
 
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [UIAlertView showAlertWithTitle:@"title" message:@"message" okButtonTitle:@"OK!" okActionBlock:^{
+        Print(@"OK ACTION BLOCK");
+    }];
+}
+
+
 @end

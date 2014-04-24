@@ -512,7 +512,7 @@ static NSString *__nibName;
     CGRect frame;
     frame = self.frame;
     CGFloat heightThatFits = [self.text sizeWithFont:self.font constrainedToSize:CGSizeMake(self.frame.size.width, MAXFLOAT) lineBreakMode:self.lineBreakMode].height;
-    frame.size.height = MIN(heightThatFits, self.frame.size.height);
+    frame.size.height = ceil(MIN(heightThatFits, self.frame.size.height));
     self.frame = frame;
 }
 
@@ -522,7 +522,7 @@ static NSString *__nibName;
     CGRect frame;
     frame = self.frame;
     CGFloat widthThatFits = [self.text sizeWithFont:self.font constrainedToSize:CGSizeMake(MAXFLOAT, self.frame.size.height) lineBreakMode:self.lineBreakMode].width;
-    frame.size.width = MIN(widthThatFits, self.frame.size.width);
+    frame.size.width = ceil(MIN(widthThatFits, self.frame.size.width));
     self.frame = frame;
 }
 
@@ -532,7 +532,7 @@ static NSString *__nibName;
     CGRect frame;
     frame = self.frame;
     CGFloat heightThatFits = [self.text sizeWithFont:self.font constrainedToSize:CGSizeMake(self.frame.size.width, MAXFLOAT) lineBreakMode:self.lineBreakMode].height;
-    frame.size.height = MIN(heightThatFits, maxHeight);
+    frame.size.height = ceil(MIN(heightThatFits, maxHeight));
     self.frame = frame;
 }
 
@@ -542,7 +542,7 @@ static NSString *__nibName;
     CGRect frame;
     frame = self.frame;
     CGFloat widthThatFits = [self.text sizeWithFont:self.font constrainedToSize:CGSizeMake(MAXFLOAT, self.frame.size.height) lineBreakMode:self.lineBreakMode].width;
-    frame.size.width = MIN(widthThatFits, maxWidth);
+    frame.size.width = ceil(MIN(widthThatFits, maxWidth));
     self.frame = frame;
 }
 
@@ -561,13 +561,13 @@ static NSString *__nibName;
 
 - (CGFloat)heightForLabelWidth:(CGFloat)width
 {
-    return [self.text sizeWithFont:self.font constrainedToSize:CGSizeMake(width, MAXFLOAT) lineBreakMode:self.lineBreakMode].height;
+    return ceil([self.text sizeWithFont:self.font constrainedToSize:CGSizeMake(width, MAXFLOAT) lineBreakMode:self.lineBreakMode].height);
 }
 
 
 - (CGFloat)widthForLabelHeight:(CGFloat)height
 {
-    return [self.text sizeWithFont:self.font constrainedToSize:CGSizeMake(MAXFLOAT, height) lineBreakMode:self.lineBreakMode].width;
+    return ceil([self.text sizeWithFont:self.font constrainedToSize:CGSizeMake(MAXFLOAT, height) lineBreakMode:self.lineBreakMode].width);
 }
 
 
@@ -1344,8 +1344,8 @@ char *NewBase64Encode(
 @implementation UIAlertView (UIAlertView_LHelperCategories)
 
 
-static char LDISMISS_IDENTIFER;
-static char LCANCEL_IDENTIFER;
+static const void *LDISMISS_IDENTIFER = &LDISMISS_IDENTIFER;
+static const void *LCANCEL_IDENTIFER = &LCANCEL_IDENTIFER;
 
 
 @dynamic cancelBlock;
@@ -1354,22 +1354,22 @@ static char LCANCEL_IDENTIFER;
 
 - (void)setDismissBlock:(LDismissBlock)dismissBlock
 {
-    objc_setAssociatedObject(self, &LDISMISS_IDENTIFER, dismissBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    objc_setAssociatedObject(self, LDISMISS_IDENTIFER, dismissBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 - (LDismissBlock)dismissBlock
 {
-    return objc_getAssociatedObject(self, &LDISMISS_IDENTIFER);
+    return objc_getAssociatedObject(self, LDISMISS_IDENTIFER);
 }
 
 - (void)setCancelBlock:(LCancelBlock)cancelBlock
 {
-    objc_setAssociatedObject(self, &LCANCEL_IDENTIFER, cancelBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    objc_setAssociatedObject(self, LCANCEL_IDENTIFER, cancelBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 - (LCancelBlock)cancelBlock
 {
-    return objc_getAssociatedObject(self, &LCANCEL_IDENTIFER);
+    return objc_getAssociatedObject(self, LCANCEL_IDENTIFER);
 }
 
 
@@ -1437,6 +1437,38 @@ static char LCANCEL_IDENTIFER;
                     }
                      onCancel:nil] show];
 }
+
+
++ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSArray *)otherButtons onDismiss:(LDismissBlock)dismissBlock onCancel:(LCancelBlock)cancelBlock
+{
+    [[self alertViewWithTitle:title
+                      message:message
+            cancelButtonTitle:cancelButtonTitle
+            otherButtonTitles:otherButtons
+                    onDismiss:dismissBlock
+                     onCancel:cancelBlock] show];
+}
+
+
+#pragma mark - UIAlertViewDelegate
+
+
++ (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	if (buttonIndex == [alertView cancelButtonIndex])
+	{
+		if (alertView.cancelBlock)
+            alertView.cancelBlock();
+	}
+    else
+    {
+        if (alertView.dismissBlock)
+            alertView.dismissBlock(buttonIndex - 1);
+    }
+}
+
+
+#pragma mark -
 
 
 @end
