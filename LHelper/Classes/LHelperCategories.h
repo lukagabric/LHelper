@@ -210,12 +210,12 @@
 
 @interface NSData (NSData_LHelperCategories)
 
-void *NewBase64Decode(
+void *LNewBase64Decode(
                       const char *inputBuffer,
                       size_t length,
                       size_t *outputLength);
 
-char *NewBase64Encode(
+char *LNewBase64Encode(
                       const void *inputBuffer,
                       size_t length,
                       bool separateLines,
