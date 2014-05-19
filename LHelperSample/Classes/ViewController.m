@@ -23,9 +23,24 @@
 {
     [super viewDidAppear:animated];
     
+    //alert
     [UIAlertView showAlertWithTitle:@"title" message:@"message" okButtonTitle:@"OK!" okActionBlock:^{
         Print(@"OK ACTION BLOCK");
     }];
+    
+    //base64
+    NSString *username = @"username";
+    NSString *password = @"password";
+
+    NSString *originalString = [NSString stringWithFormat:@"%@:%@", username, password];
+    NSString *encodedString = [[originalString dataUsingEncoding:NSUTF8StringEncoding] base64EncodedString];
+    
+    Print(encodedString);
+    
+    NSData *decodedData = [encodedString dataFromBase64String];
+    NSString *decodedString = [decodedData stringUsingEncoding:NSUTF8StringEncoding];
+    
+    Print(decodedString);
 }
 
 

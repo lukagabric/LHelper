@@ -210,16 +210,6 @@
 
 @interface NSData (NSData_LHelperCategories)
 
-void *LNewBase64Decode(
-                      const char *inputBuffer,
-                      size_t length,
-                      size_t *outputLength);
-
-char *LNewBase64Encode(
-                      const void *inputBuffer,
-                      size_t length,
-                      bool separateLines,
-                      size_t *outputLength);
 
 - (NSString *)stringUsingEncoding:(NSStringEncoding)encoding;
 - (NSString *)md5;
