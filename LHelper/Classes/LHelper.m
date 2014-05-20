@@ -11,6 +11,15 @@
 @implementation LHelper
 
 
+#pragma mark - Is string empty
+
+
++ (BOOL)isStringEmptyOrNil:(NSString *)string
+{
+    return !string || [string isEmpty];
+}
+
+
 #pragma mark - Basic HTTP Authentication
 
 

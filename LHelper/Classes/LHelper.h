@@ -9,6 +9,12 @@
 #import "LHelperCategories.h"
 
 
+#pragma mark - String empty
+
+
+#define isStringEmptyOrNil(str) [LHelper isStringEmptyOrNil:str]
+
+
 #pragma mark - StrTo conversion
 
 
@@ -162,6 +168,12 @@ while(condition) { \
 
 
 @interface LHelper : NSObject
+
+
+#pragma mark - Is string empty
+
+
++ (BOOL)isStringEmptyOrNil:(NSString *)string;
 
 
 #pragma mark - Basic HTTP Authentication

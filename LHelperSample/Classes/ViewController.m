@@ -41,6 +41,20 @@
     NSString *decodedString = [decodedData stringUsingEncoding:NSUTF8StringEncoding];
     
     Print(decodedString);
+    
+    //empty string
+    
+    NSString *checkString;
+    Print(isStringEmptyOrNil(checkString) ? @"Empty" : @"Not empty");
+
+    checkString = @"      ";
+    Print(isStringEmptyOrNil(checkString) ? @"Empty" : @"Not empty");
+    
+    checkString = @"   \n  \n   ";
+    Print(isStringEmptyOrNil(checkString) ? @"Empty" : @"Not empty");
+    
+    checkString = @"   \n a \n   ";
+    Print(isStringEmptyOrNil(checkString) ? @"Empty" : @"Not empty");
 }
 
 
