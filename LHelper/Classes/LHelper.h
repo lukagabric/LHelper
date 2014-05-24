@@ -93,15 +93,15 @@ __PRAGMA_POP_NO_EXTRA_ARG_WARNINGS \
 #pragma mark - Check if widescreen
 
 
-#define isWidescreen (fabs((double)[[UIScreen mainScreen] bounds].size.height - (double)568) < DBL_EPSILON)
+#define isWidescreen() (fabs((double)[[UIScreen mainScreen] bounds].size.height - (double)568) < DBL_EPSILON)
 
 
 #pragma mark - Check device
 
 
-#define isIPhone ([[[UIDevice currentDevice] model] isEqualToString:@"iPhone"])
-#define isIPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-#define isIPod ([[[UIDevice currentDevice] model] isEqualToString:@"iPod touch"])
+#define isIPhone() ([[[UIDevice currentDevice] model] isEqualToString:@"iPhone"])
+#define isIPad() (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define isIPod() ([[[UIDevice currentDevice] model] isEqualToString:@"iPod touch"])
 
 
 #pragma mark - Deg2Rad
@@ -129,8 +129,8 @@ __PRAGMA_POP_NO_EXTRA_ARG_WARNINGS \
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
 
-#define isIOS6 SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6") && SYSTEM_VERSION_LESS_THAN(@"7")
-#define isIOS7 SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7")
+#define isIOS6() SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6") && SYSTEM_VERSION_LESS_THAN(@"7")
+#define isIOS7() SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7")
 
 
 #pragma mark - Singleton GCD Macro
